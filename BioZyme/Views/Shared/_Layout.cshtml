@@ -17,29 +17,105 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
+
+<link href="~/css/StyleSheet.css" type="text/css" rel="stylesheet" />
+<style>
+    body {
+        padding:0px;
+        position: relative;
+    }
+
+    .affix {
+        top: 0;
+        width: 100%;
+        z-index: 9999 !important;
+    }
+
+    .navbar {
+        margin-bottom: 0px;
+    }
+
+    .affix ~ .container-fluid {
+        position: relative;
+        top: 50px;
+    }
+
+    #section1 {
+        padding-top: 150px;
+        height: 500px;
+        color: #;
+        background-color: #;
+    }
+
+    #section2 {
+        padding-top: 50px;
+        height: 500px;
+        color: #;
+        background-color: #;
+    }
+
+    #section3 {
+        padding-top: 50px;
+        height: 500px;
+        color: #;
+        background-color: #;
+    }
+
+    #section41 {
+        padding-top: 50px;
+        height: 500px;
+        color: #;
+        background-color: #;
+    }
+
+    #section42 {
+        padding-top: 50px;
+        height: 500px;
+        color: #;
+        background-color: #;
+    }
+</style>
 </head>
 <body>
+
+    
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BioZyme</a>
+                <a class="navbar-brand" href="#">Bio-Zyme</a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
+            <div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#section1">Our Products</a></li>
+                        <li><a href="#section2">Solutions</a></li>
+                        <li><a href="#section3">Case Studies</a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Restricted<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#section41">Restricted 1</a></li>
+                                <li><a href="#section42">Restricted 2</a></li>
+                            </ul>
+                        </li>
+
+
+                        }
+                        @await Html.PartialAsync("_LoginPartial")
+                    </ul>
+                </div>
             </div>
-        </div>
     </nav>
+    <div class="container-fluid" style="color:#fff;height:300px;width:100%">
+        <img src="~/images/Ferns head.png" style="width:100%" />
+    </div>
+    
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -71,4 +147,5 @@
 
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>
